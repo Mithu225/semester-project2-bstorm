@@ -21,7 +21,7 @@
   <body>
     <!-- <div id="app"></div> -->
     <div class="flex min-h-screen flex-col">
-      <main class="flex-1">
+      <main class="flex-grow">
         <header
           class="bg-common flex flex-col items-center justify-between gap-4 p-2.5 px-5 sm:flex-row"
         >
@@ -68,13 +68,14 @@
                 ></ion-icon>
               </button>
               <button
-                id="profile"
+                id="login-button"
+                onclick="toggleForm('login')"
                 class="bg-icon h-10 w-10 cursor-pointer rounded-md border-0 p-1 text-lg font-bold transition-colors duration-300 ease-in-out hover:bg-gray-200"
               >
                 <ion-icon
                   class="cursor-pointer text-white"
                   size="large"
-                  name="person-circle-outline"
+                  name="log-in-outline"
                 ></ion-icon>
               </button>
               <button
@@ -98,7 +99,7 @@
           excitement meets opportunity.
         </p>
 
-        <div class="flex flex-wrap justify-center gap-8 pt-6">
+        <div class="flex flex-wrap justify-center gap-8 p-8">
           <div
             class="flex w-full flex-col overflow-hidden rounded-lg border bg-white p-4 shadow-md sm:w-1/2 lg:w-1/4"
           >
@@ -209,19 +210,189 @@
             </div>
           </div>
         </div>
+        <div id="login-form" class="hidden">
+          <div
+            class="fixed inset-0 flex items-center justify-center bg-gray-400 bg-opacity-75"
+          >
+            <div class="relative flex flex-grow items-center justify-center">
+              <div class="bg-common relative flex w-3/4 rounded-lg border pb-6">
+                <button
+                  id="close-login-button"
+                  class="absolute right-2 top-2 h-10 w-10 cursor-pointer rounded-md border-0 p-1 text-lg font-bold transition-colors duration-300 ease-in-out hover:bg-gray-200"
+                >
+                  <ion-icon
+                    class="text-icon cursor-pointer"
+                    size="large"
+                    name="close-outline"
+                  ></ion-icon>
+                </button>
+                <div class="flex-1 rounded-lg text-white">
+                  <div class="text-center">
+                    <img
+                      class="mx-auto mb-2 cursor-pointer"
+                      src="./public/asset/bstorm-logo.png"
+                      alt="bStorm logo"
+                    />
+
+                    <h1 class="m-0 text-center text-white">
+                      Bid Strong Win Stronger
+                    </h1>
+                  </div>
+
+                  <form
+                    class="mx-auto flex max-w-[40rem] flex-col pt-4 text-lg"
+                    name="login"
+                  >
+                    <div
+                      class="flex w-full flex-col gap-4 px-8 py-0 text-left sm:px-0"
+                    >
+                      <label class="text-white" for="email">Email</label>
+                      <input
+                        class="mb-4 rounded-md border-2 border-transparent bg-origin-border p-2 text-base [background-clip:padding-box,border-box]"
+                        id="email"
+                        type="email"
+                        name="email"
+                        placeholder="mail@stud.noroff.no"
+                        required
+                      />
+
+                      <label class="text-white" for="password">Password</label>
+                      <input
+                        class="mb-4 rounded-md border-2 border-transparent bg-origin-border p-2 text-base [background-clip:padding-box,border-box]"
+                        type="password"
+                        name="password"
+                        id="password"
+                        minlength="8"
+                        placeholder="Min 08 characters"
+                        required
+                      />
+                    </div>
+                    <div id="errors" class="error text-red-500"></div>
+                    <div class="p-8 text-center">
+                      <button
+                        id="login-submit-button"
+                        type="submit"
+                        class="bg-icon text-common cursor-pointer rounded-lg px-6 pt-0"
+                      >
+                        log in
+                      </button>
+                    </div>
+                    <hr class="my-4 border-white" />
+                    <div class="flex justify-center gap-4 pt-4">
+                      <p class="text-white">Ready to register?</p>
+                      <button
+                        id="register-button"
+                        onclick="toggleForm('register')"
+                        class="bg-icon text-common cursor-pointer rounded-lg px-6 pt-0"
+                      >
+                        register
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="register-form" class="hidden">
+          <div
+            class="fixed inset-0 flex items-center justify-center bg-gray-400 bg-opacity-75"
+          >
+          <div class="relative flex items-center justify-center flex-grow">
+            <div
+              class="bg-common relative flex w-3/4 items-center justify-center rounded-lg border pb-6 text-center"
+            >
+              <button
+                id="close-register-button"
+                class="absolute right-2 top-2 h-10 w-10 cursor-pointer rounded-md border-0 p-1 text-lg font-bold transition-colors duration-300 ease-in-out hover:bg-gray-200"
+              >
+                <ion-icon
+                  class="text-icon cursor-pointer"
+                  size="large"
+                  name="close-outline"
+                ></ion-icon>
+              </button>
+              <div class="flex-1 rounded-lg text-white">
+                <div class="text-center">
+                  <img
+                    class="mx-auto mb-2 cursor-pointer"
+                    src="./public/asset/bstorm-logo.png"
+                    alt="bStorm logo"
+                  />
+
+                  <h1 class="m-0 text-center text-white">
+                    Bid Strong Win Stronger
+                  </h1>
+                </div>
+                <form
+                  class="mx-auto flex max-w-[40rem] flex-col pt-4 text-lg"
+                  name="register"
+                >
+                  <div
+                    class="flex w-full flex-col gap-4 px-8 py-0 text-left sm:px-0"
+                  >
+                    <label class="text-white" for="username">User</label>
+                    <input
+                      class="mb-4 rounded-md border-2 border-transparent bg-origin-border p-2 text-base [background-clip:padding-box,border-box]"
+                      id="username"
+                      type="username"
+                      name="username"
+                      maxlength="20"
+                      pattern="^[\w]+$"
+                      title="Please enter a username using only letters and numbers"
+                      placeholder="Max 20 characters"
+                      required
+                    />
+                    <label class="text-white" for="email">Email</label>
+                    <input
+                      class="mb-4 rounded-md border-2 border-transparent bg-origin-border p-2 text-base [background-clip:padding-box,border-box]"
+                      id="email"
+                      type="email"
+                      name="email"
+                      placeholder="mail@stud.noroff.no"
+                      required
+                    />
+
+                    <label class="text-white" for="password">Password</label>
+                    <input
+                      class="mb-4 rounded-md border-2 border-transparent bg-origin-border p-2 text-base [background-clip:padding-box,border-box]"
+                      type="password"
+                      name="password"
+                      id="password"
+                      minlength="8"
+                      placeholder="Min 08 characters"
+                      required
+                    />
+                  </div>
+                  <div id="errors" class="error text-red-500"></div>
+                  <div class="p-8 text-center">
+                    <button
+                      id="register-submit-button"
+                      type="submit"
+                      class="bg-icon text-common cursor-pointer rounded-lg px-6 pt-0"
+                    >
+                      register
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
       </main>
+      <footer>
+        <div class="bg-common flex flex-col items-center pt-4">
+          <img
+            class="mb-2 h-auto items-center"
+            src="./public/asset/footer-logo.png"
+            alt="bStorm logo"
+          />
+          <p class="justify-center pb-4 text-base text-white">
+            &copy; All rights reserved 2024.
+          </p>
+        </div>
+      </footer>
     </div>
-    <footer>
-      <div class="bg-common flex flex-col items-center pt-4">
-        <img
-          class="mb-2 h-auto items-center"
-          src="./public/asset/footer-logo.png"
-          alt="bStorm logo"
-        />
-        <p class="justify-center pb-4 text-base text-white">
-          &copy; All rights reserved 2024.
-        </p>
-      </div>
-    </footer>
   </body>
 </html>
