@@ -23,7 +23,7 @@
     <div class="flex min-h-screen flex-col">
       <main class="flex-grow">
         <header
-          class="bg-common flex flex-col items-center justify-between gap-4 p-2.5 px-5 sm:flex-row"
+          class="flex flex-col items-center justify-between gap-4 bg-common p-2.5 px-5 sm:flex-row"
         >
           <div class="flex w-full justify-center sm:w-auto sm:justify-start">
             <a href="/">
@@ -48,7 +48,7 @@
                 class="absolute right-3 top-1/2 -translate-y-1/2 transform cursor-pointer border-0 bg-white"
               >
                 <ion-icon
-                  class="text-common text-lg"
+                  class="text-lg text-common"
                   name="search-outline"
                 ></ion-icon>
               </button>
@@ -59,7 +59,7 @@
             <div class="flex items-center gap-2 pr-8">
               <button
                 id="list"
-                class="bg-icon h-10 w-10 cursor-pointer rounded-md border-0 p-1 text-lg font-bold transition-colors duration-300 ease-in-out hover:bg-gray-200"
+                class="h-10 w-10 cursor-pointer rounded-md border-0 bg-icon p-1 text-lg font-bold transition-colors duration-300 ease-in-out hover:bg-gray-200"
               >
                 <ion-icon
                   class="cursor-pointer text-white"
@@ -69,8 +69,7 @@
               </button>
               <button
                 id="login-button"
-                onclick="toggleForm('login')"
-                class="bg-icon h-10 w-10 cursor-pointer rounded-md border-0 p-1 text-lg font-bold transition-colors duration-300 ease-in-out hover:bg-gray-200"
+                class="h-10 w-10 cursor-pointer rounded-md border-0 bg-icon p-1 text-lg font-bold transition-colors duration-300 ease-in-out hover:bg-gray-200"
               >
                 <ion-icon
                   class="cursor-pointer text-white"
@@ -80,7 +79,7 @@
               </button>
               <button
                 id="logout-button"
-                class="bg-icon h-10 w-10 cursor-pointer rounded-md border-0 p-1 text-lg font-bold transition-colors duration-300 ease-in-out hover:bg-gray-200"
+                class="h-10 w-10 cursor-pointer rounded-md border-0 bg-icon p-1 text-lg font-bold transition-colors duration-300 ease-in-out hover:bg-gray-200"
               >
                 <ion-icon
                   class="cursor-pointer text-white"
@@ -91,14 +90,34 @@
             </div>
           </div>
         </header>
-        <h1 class="text-h1 p-6 text-center text-4xl">Join the Storm!</h1>
-        <p class="mx-auto w-1/2 pb-4 text-justify text-2xl text-black">
-          We believe that every item has its own story, and every bid brings a
-          new opportunity. Whether you're looking to score big on unique items
-          or put your own treasures up for grabs, bStorm is the place where
-          excitement meets opportunity.
-        </p>
-
+        <div class="hidden p-4" id="avatar-home">
+          <div class="flex flex-row gap-4 p-4">
+            <img
+              class="h-20 w-20 rounded-full"
+              src="./public/asset/rings.jpg"
+            />
+            <div class="flex flex-col">
+              <p class="cursor-pointer py-2 text-sm font-bold text-common">
+                Username
+              </p>
+              <p class="text-sm font-bold text-common">Credit: 1000</p>
+              <button
+                class="mt-2 rounded bg-icon px-4 py-2 font-semibold text-common transition hover:bg-green-600"
+              >
+                Create New
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="hidden" id="introduction">
+          <h1 class="p-6 text-center text-4xl text-h1">Join the Storm!</h1>
+          <p class="mx-auto w-1/2 pb-4 text-justify text-2xl text-black">
+            We believe that every item has its own story, and every bid brings a
+            new opportunity. Whether you're looking to score big on unique items
+            or put your own treasures up for grabs, bStorm is the place where
+            excitement meets opportunity.
+          </p>
+        </div>
         <div class="flex flex-wrap justify-center gap-8 p-8">
           <div
             class="flex w-full flex-col overflow-hidden rounded-lg border bg-white p-4 shadow-md sm:w-1/2 lg:w-1/4"
@@ -215,13 +234,13 @@
             class="fixed inset-0 flex items-center justify-center bg-gray-400 bg-opacity-75"
           >
             <div class="relative flex flex-grow items-center justify-center">
-              <div class="bg-common relative flex w-3/4 rounded-lg border pb-6">
+              <div class="relative flex w-3/4 rounded-lg border bg-common pb-6">
                 <button
                   id="close-login-button"
                   class="absolute right-2 top-2 h-10 w-10 cursor-pointer rounded-md border-0 p-1 text-lg font-bold transition-colors duration-300 ease-in-out hover:bg-gray-200"
                 >
                   <ion-icon
-                    class="text-icon cursor-pointer"
+                    class="cursor-pointer text-icon"
                     size="large"
                     name="close-outline"
                   ></ion-icon>
@@ -248,8 +267,8 @@
                     >
                       <label class="text-white" for="email">Email</label>
                       <input
-                        class="mb-4 rounded-md border-2 border-transparent bg-origin-border p-2 text-base [background-clip:padding-box,border-box]"
-                        id="email"
+                        class="mb-4 rounded-md border-2 border-transparent bg-origin-border p-2 text-base text-black [background-clip:padding-box,border-box]"
+                        id="email-login"
                         type="email"
                         name="email"
                         placeholder="mail@stud.noroff.no"
@@ -258,10 +277,10 @@
 
                       <label class="text-white" for="password">Password</label>
                       <input
-                        class="mb-4 rounded-md border-2 border-transparent bg-origin-border p-2 text-base [background-clip:padding-box,border-box]"
+                        class="mb-4 rounded-md border-2 border-transparent bg-origin-border p-2 text-base text-black [background-clip:padding-box,border-box]"
                         type="password"
                         name="password"
-                        id="password"
+                        id="password-login"
                         minlength="8"
                         placeholder="Min 08 characters"
                         required
@@ -272,7 +291,7 @@
                       <button
                         id="login-submit-button"
                         type="submit"
-                        class="bg-icon text-common cursor-pointer rounded-lg px-6 pt-0"
+                        class="cursor-pointer rounded-lg bg-icon px-6 pt-0 text-common"
                       >
                         log in
                       </button>
@@ -282,8 +301,8 @@
                       <p class="text-white">Ready to register?</p>
                       <button
                         id="register-button"
-                        onclick="toggleForm('register')"
-                        class="bg-icon text-common cursor-pointer rounded-lg px-6 pt-0"
+                        type="button"
+                        class="cursor-pointer rounded-lg bg-icon px-6 pt-0 text-common"
                       >
                         register
                       </button>
@@ -298,91 +317,91 @@
           <div
             class="fixed inset-0 flex items-center justify-center bg-gray-400 bg-opacity-75"
           >
-          <div class="relative flex items-center justify-center flex-grow">
-            <div
-              class="bg-common relative flex w-3/4 items-center justify-center rounded-lg border pb-6 text-center"
-            >
-              <button
-                id="close-register-button"
-                class="absolute right-2 top-2 h-10 w-10 cursor-pointer rounded-md border-0 p-1 text-lg font-bold transition-colors duration-300 ease-in-out hover:bg-gray-200"
+            <div class="relative flex flex-grow items-center justify-center">
+              <div
+                class="relative flex w-3/4 items-center justify-center rounded-lg border bg-common pb-6 text-center"
               >
-                <ion-icon
-                  class="text-icon cursor-pointer"
-                  size="large"
-                  name="close-outline"
-                ></ion-icon>
-              </button>
-              <div class="flex-1 rounded-lg text-white">
-                <div class="text-center">
-                  <img
-                    class="mx-auto mb-2 cursor-pointer"
-                    src="./public/asset/bstorm-logo.png"
-                    alt="bStorm logo"
-                  />
-
-                  <h1 class="m-0 text-center text-white">
-                    Bid Strong Win Stronger
-                  </h1>
-                </div>
-                <form
-                  class="mx-auto flex max-w-[40rem] flex-col pt-4 text-lg"
-                  name="register"
+                <button
+                  id="close-register-button"
+                  class="absolute right-2 top-2 h-10 w-10 cursor-pointer rounded-md border-0 p-1 text-lg font-bold transition-colors duration-300 ease-in-out hover:bg-gray-200"
                 >
-                  <div
-                    class="flex w-full flex-col gap-4 px-8 py-0 text-left sm:px-0"
-                  >
-                    <label class="text-white" for="username">User</label>
-                    <input
-                      class="mb-4 rounded-md border-2 border-transparent bg-origin-border p-2 text-base [background-clip:padding-box,border-box]"
-                      id="username"
-                      type="username"
-                      name="username"
-                      maxlength="20"
-                      pattern="^[\w]+$"
-                      title="Please enter a username using only letters and numbers"
-                      placeholder="Max 20 characters"
-                      required
-                    />
-                    <label class="text-white" for="email">Email</label>
-                    <input
-                      class="mb-4 rounded-md border-2 border-transparent bg-origin-border p-2 text-base [background-clip:padding-box,border-box]"
-                      id="email"
-                      type="email"
-                      name="email"
-                      placeholder="mail@stud.noroff.no"
-                      required
+                  <ion-icon
+                    class="cursor-pointer text-icon"
+                    size="large"
+                    name="close-outline"
+                  ></ion-icon>
+                </button>
+                <div class="flex-1 rounded-lg text-white">
+                  <div class="text-center">
+                    <img
+                      class="mx-auto mb-2 cursor-pointer"
+                      src="./public/asset/bstorm-logo.png"
+                      alt="bStorm logo"
                     />
 
-                    <label class="text-white" for="password">Password</label>
-                    <input
-                      class="mb-4 rounded-md border-2 border-transparent bg-origin-border p-2 text-base [background-clip:padding-box,border-box]"
-                      type="password"
-                      name="password"
-                      id="password"
-                      minlength="8"
-                      placeholder="Min 08 characters"
-                      required
-                    />
+                    <h1 class="m-0 text-center text-white">
+                      Bid Strong Win Stronger
+                    </h1>
                   </div>
-                  <div id="errors" class="error text-red-500"></div>
-                  <div class="p-8 text-center">
-                    <button
-                      id="register-submit-button"
-                      type="submit"
-                      class="bg-icon text-common cursor-pointer rounded-lg px-6 pt-0"
+                  <form
+                    class="mx-auto flex max-w-[40rem] flex-col pt-4 text-lg"
+                    name="register"
+                  >
+                    <div
+                      class="flex w-full flex-col gap-4 px-8 py-0 text-left sm:px-0"
                     >
-                      register
-                    </button>
-                  </div>
-                </form>
+                      <label class="text-white" for="username">User</label>
+                      <input
+                        class="mb-4 rounded-md border-2 border-transparent bg-origin-border p-2 text-base text-black [background-clip:padding-box,border-box]"
+                        id="username"
+                        type="username"
+                        name="username"
+                        maxlength="20"
+                        pattern="^[\w]+$"
+                        title="Please enter a username using only letters and numbers"
+                        placeholder="Max 20 characters"
+                        required
+                      />
+                      <label class="text-white" for="email">Email</label>
+                      <input
+                        class="mb-4 rounded-md border-2 border-transparent bg-origin-border p-2 text-base text-black [background-clip:padding-box,border-box]"
+                        id="email-register"
+                        type="email"
+                        name="email"
+                        placeholder="mail@stud.noroff.no"
+                        required
+                      />
+
+                      <label class="text-white" for="password">Password</label>
+                      <input
+                        class="mb-4 rounded-md border-2 border-transparent bg-origin-border p-2 text-base text-black [background-clip:padding-box,border-box]"
+                        type="password"
+                        name="password"
+                        id="password-register"
+                        minlength="8"
+                        placeholder="Min 08 characters"
+                        required
+                      />
+                    </div>
+                    <div id="errors" class="error text-red-500"></div>
+                    <div class="p-8 text-center">
+                      <button
+                        id="register-submit-button"
+                        type="submit"
+                        class="cursor-pointer rounded-lg bg-icon px-6 pt-0 text-common"
+                      >
+                        register
+                      </button>
+                    </div>
+                  </form>
+                </div>
               </div>
             </div>
-          </div>
           </div>
         </div>
       </main>
       <footer>
-        <div class="bg-common flex flex-col items-center pt-4">
+        <div class="flex flex-col items-center bg-common pt-4">
           <img
             class="mb-2 h-auto items-center"
             src="./public/asset/footer-logo.png"

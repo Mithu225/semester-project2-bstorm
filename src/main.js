@@ -1,26 +1,9 @@
-// document.querySelector("#app").innerHTML = `
-//   <div>
-//     <a href="/login">login</a> |
-//     <a href="/profile">profile</a>
-//   </div>
-// `;
-
-const loginButtonElm = document.querySelector("#login-button");
-const loginFormElm = document.querySelector("#login-form");
-
-loginButtonElm.addEventListener("click", () => {
-  loginFormElm.classList.toggle("hidden");
-});
-
-const registerButtonElm = document.querySelector("#register-button");
-const registerFormElm = document.querySelector("#register-form");
-
-registerButtonElm.addEventListener("click", () => {
-  loginFormElm.classList.toggle("hidden");
-  registerFormElm.classList.toggle("hidden");
-});
+import "@app/login/login";
+import "@app/register/register"
 
 const closeLoginButtonElm = document.querySelector("#close-login-button");
+const loginFormElm = document.querySelector("#login-form");
+const registerFormElm = document.querySelector("#register-form");
 
 closeLoginButtonElm.addEventListener("click", () => {
   loginFormElm.classList.add("hidden");
@@ -31,3 +14,21 @@ closeRegisterButtonElm.addEventListener("click", () => {
   loginFormElm.classList.add("hidden");
   registerFormElm.classList.add("hidden");
 });
+
+//user status b1
+
+const userFromLocal = localStorage.getItem("user");
+const user = userFromLocal != null ? JSON.parse(userFromLocal) : null;
+
+
+  const token = localStorage.getItem("token");
+  
+  const userInfo = document.querySelector("#avatar-home");
+  const introduction = document.querySelector("#introduction");
+  if (token) {
+    userInfo.classList.remove("hidden");
+  } else {
+    introduction.classList.remove("hidden");
+  }
+  
+
