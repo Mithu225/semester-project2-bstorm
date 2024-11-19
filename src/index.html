@@ -97,8 +97,11 @@
               src="./public/asset/rings.jpg"
             />
             <div class="flex flex-col">
-              <p class="cursor-pointer py-2 text-sm font-bold text-common">
-                Username
+              <p
+                id="credit-username"
+                class="cursor-pointer py-2 text-sm font-bold text-common"
+              >
+                mi
               </p>
               <p class="text-sm font-bold text-common">Credit: 1000</p>
               <button
@@ -286,7 +289,7 @@
                         required
                       />
                     </div>
-                    <div id="errors" class="error text-red-500"></div>
+                    <div id="errors" class="text-red-500"></div>
                     <div class="p-8 text-center">
                       <button
                         id="login-submit-button"
@@ -355,7 +358,7 @@
                         class="mb-4 rounded-md border-2 border-transparent bg-origin-border p-2 text-base text-black [background-clip:padding-box,border-box]"
                         id="username"
                         type="username"
-                        name="username"
+                        name="name"
                         maxlength="20"
                         pattern="^[\w]+$"
                         title="Please enter a username using only letters and numbers"
@@ -383,7 +386,7 @@
                         required
                       />
                     </div>
-                    <div id="errors" class="error text-red-500"></div>
+                    <div id="errors-register" class="text-red-500"></div>
                     <div class="p-8 text-center">
                       <button
                         id="register-submit-button"
@@ -396,6 +399,24 @@
                   </form>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+        <div id="register-success-popup" class="hidden">
+          <div
+            class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50"
+          >
+            <div class="max-w-md rounded-lg bg-white p-6 text-center shadow-lg">
+              <h2 class="mb-2 text-2xl font-bold text-green-600">
+                Registration Successful!
+              </h2>
+              <p class="mb-4 text-gray-700">Welcome to the platform.</p>
+              <button
+                id="close-popup"
+                class="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
+              >
+                OK
+              </button>
             </div>
           </div>
         </div>

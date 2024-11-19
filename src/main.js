@@ -1,5 +1,5 @@
 import "@app/login/login";
-import "@app/register/register"
+import "@app/register/register";
 
 const closeLoginButtonElm = document.querySelector("#close-login-button");
 const loginFormElm = document.querySelector("#login-form");
@@ -20,15 +20,16 @@ closeRegisterButtonElm.addEventListener("click", () => {
 const userFromLocal = localStorage.getItem("user");
 const user = userFromLocal != null ? JSON.parse(userFromLocal) : null;
 
+const token = localStorage.getItem("token");
 
-  const token = localStorage.getItem("token");
-  
-  const userInfo = document.querySelector("#avatar-home");
-  const introduction = document.querySelector("#introduction");
-  if (token) {
-    userInfo.classList.remove("hidden");
-  } else {
-    introduction.classList.remove("hidden");
-  }
-  
+const userInfo = document.querySelector("#avatar-home");
+const introduction = document.querySelector("#introduction");
+const creditName = document.querySelector("#credit-username");
+const userName = user.name;
 
+creditName.innerHTML = userName;
+if (token) {
+  userInfo.classList.remove("hidden");
+} else {
+  introduction.classList.remove("hidden");
+}
