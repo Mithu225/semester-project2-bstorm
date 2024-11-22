@@ -6,7 +6,8 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>bStorm Home</title>
-    <script type="module" src="../main.js"></script>
+
+    <script type="module" src="../create/create.js"></script>
     <link rel="stylesheet" href="../style.css" />
 
     <script
@@ -18,151 +19,200 @@
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
     ></script>
   </head>
-  <div class="flex min-h-screen flex-col">
-    <main class="flex-grow">
-      <header
-        class="bg-common flex flex-col items-center justify-between gap-4 p-2.5 px-5 sm:flex-row"
-      >
-        <div class="flex w-full justify-center sm:w-auto sm:justify-start">
-          <a href="/">
-            <img
-              class="cursor-pointer"
-              src="/asset/bstorm-logo.png"
-              alt="bStorm logo"
-            />
-          </a>
-        </div>
-
-        <div
-          class="flex w-full items-center justify-center sm:flex-grow sm:justify-start sm:pl-4"
+  <body>
+    <div class="flex min-h-screen flex-col">
+      <main class="flex-grow">
+        <header
+          class="flex flex-col items-center justify-between gap-4 bg-common p-2.5 px-5 sm:flex-row"
         >
-          <div class="relative w-full sm:w-1/2">
-            <input
-              type="text"
-              placeholder="Find listing...."
-              class="w-full rounded-full border border-gray-300 p-2 text-lg outline-none"
-            />
-            <button
-              class="absolute right-3 top-1/2 -translate-y-1/2 transform cursor-pointer border-0 bg-white"
-            >
-              <ion-icon
-                class="text-common text-lg"
-                name="search-outline"
-              ></ion-icon>
-            </button>
+          <div class="flex w-full justify-center sm:w-auto sm:justify-start">
+            <a href="/">
+              <img
+                class="cursor-pointer"
+                src="/asset/bstorm-logo.png"
+                alt="bStorm logo"
+              />
+            </a>
+          </div>
+
+          <div
+            class="flex w-full items-center justify-center sm:flex-grow sm:justify-start sm:pl-4"
+          >
+            <div class="relative w-full sm:w-1/2">
+              <input
+                type="text"
+                placeholder="Find listing...."
+                class="w-full rounded-full border border-gray-300 p-2 text-lg outline-none"
+              />
+              <button
+                class="absolute right-3 top-1/2 -translate-y-1/2 transform cursor-pointer border-0 bg-white"
+              >
+                <ion-icon
+                  class="text-lg text-common"
+                  name="search-outline"
+                ></ion-icon>
+              </button>
+            </div>
+          </div>
+
+          <div class="flex w-full justify-center sm:w-auto sm:justify-end">
+            <div class="flex items-center gap-2 pr-8">
+              <button
+                id="list"
+                class="h-10 w-10 cursor-pointer rounded-md border-0 bg-icon p-1 text-lg font-bold transition-colors duration-300 ease-in-out hover:bg-gray-200"
+              >
+                <ion-icon
+                  class="cursor-pointer text-white"
+                  size="large"
+                  name="newspaper-outline"
+                ></ion-icon>
+              </button>
+              <button
+                id="login-button"
+                onclick="toggleForm('login')"
+                class="h-10 w-10 cursor-pointer rounded-md border-0 bg-icon p-1 text-lg font-bold transition-colors duration-300 ease-in-out hover:bg-gray-200"
+              >
+                <ion-icon
+                  class="cursor-pointer text-white"
+                  size="large"
+                  name="log-in-outline"
+                ></ion-icon>
+              </button>
+              <button
+                id="logout-button"
+                class="h-10 w-10 cursor-pointer rounded-md border-0 bg-icon p-1 text-lg font-bold transition-colors duration-300 ease-in-out hover:bg-gray-200"
+              >
+                <ion-icon
+                  class="cursor-pointer text-white"
+                  size="large"
+                  name="log-out-outline"
+                ></ion-icon>
+              </button>
+            </div>
+          </div>
+        </header>
+        <div class="flex items-center justify-center p-6">
+          <div class="flex flex-grow items-center justify-center">
+            <div class="flex w-3/4 rounded-lg border bg-common pb-6">
+              <form
+                class="mx-auto flex w-full max-w-[40rem] flex-col px-8 py-4 sm:px-0"
+                name="createPost"
+              >
+                <h1 class="text-center text-3xl text-white">Create New Post</h1>
+
+                <div class="flex flex-col gap-4">
+                  <label class="text-white" for="post-title">Title:</label>
+                  <input
+                    class="mb-4 rounded-md border-2 border-transparent bg-origin-border p-2 text-base [background-clip:padding-box,border-box]"
+                    type="text"
+                    id="post-title"
+                    minlength="5"
+                    placeholder="Minimum 05 characters"
+                    name="title"
+                    required
+                  />
+
+                  <label class="text-white" for="post-content"
+                    >Description:</label
+                  >
+                  <textarea
+                    class="mb-4 rounded-md border-2 border-transparent bg-origin-border p-2 text-base [background-clip:padding-box,border-box] [background-image:linear-gradient(white,white),linear-gradient(135deg,var(--color-gradient-from),var(--color-gradient-to))]"
+                    aria-label="message"
+                    rows="8"
+                    cols="45"
+                    name="description"
+                    minlength="10"
+                    placeholder="Minimum 10 characters"
+                    id="content"
+                  ></textarea>
+
+                  <label class="text-white" for="key-words">Tags:</label>
+                  <input
+                    class="mb-4 rounded-md border-2 border-transparent bg-origin-border p-2 text-base [background-clip:padding-box,border-box]"
+                    type="string"
+                    id="keywords"
+                    name="tags"
+                    placeholder="Separate tags by commas"
+                  />
+
+                  <label class="text-white" for="post-image">Image URL:</label>
+                  <input
+                    class="mb-4 rounded-md border-2 border-transparent bg-origin-border p-2 text-base [background-clip:padding-box,border-box]"
+                    type="url"
+                    id="post-image-url"
+                    name="image-url"
+                    placeholder="Link to the image"
+                  />
+                  <label class="text-white" for="post-image">Image Alt:</label>
+                  <input
+                    class="mb-4 rounded-md border-2 border-transparent bg-origin-border p-2 text-base [background-clip:padding-box,border-box]"
+                    type="alt"
+                    id="post-image-alt"
+                    name="image-alt"
+                    placeholder="Describle the image"
+                  />
+                  <label class="text-white" for="date">Due date:</label>
+                  <input
+                    class="mb-4 rounded-md border-2 border-transparent bg-origin-border p-2 text-base [background-clip:padding-box,border-box]"
+                    type="date"
+                    id="end-date"
+                    name="date"
+                    aria-required="true"
+                    required
+                  />
+                </div>
+                <div id="errors-create" class="text-red-500"></div>
+                <div class="flex justify-center gap-8 p-6">
+                  <button
+                    id="create-post-submit-button"
+                    type="submit"
+                    class="w-[10rem] cursor-pointer rounded-md border-0 bg-icon px-4 py-2"
+                  >
+                    Create
+                  </button>
+                  <button
+                    id="cancel-post-submit-button"
+                    type="button"
+                    class="w-[10rem] cursor-pointer rounded-md border-0 bg-icon px-4 py-2"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
-
-        <div class="flex w-full justify-center sm:w-auto sm:justify-end">
-          <div class="flex items-center gap-2 pr-8">
-            <button
-              id="list"
-              class="bg-icon h-10 w-10 cursor-pointer rounded-md border-0 p-1 text-lg font-bold transition-colors duration-300 ease-in-out hover:bg-gray-200"
-            >
-              <ion-icon
-                class="cursor-pointer text-white"
-                size="large"
-                name="newspaper-outline"
-              ></ion-icon>
-            </button>
-            <button
-              id="login-button"
-              onclick="toggleForm('login')"
-              class="bg-icon h-10 w-10 cursor-pointer rounded-md border-0 p-1 text-lg font-bold transition-colors duration-300 ease-in-out hover:bg-gray-200"
-            >
-              <ion-icon
-                class="cursor-pointer text-white"
-                size="large"
-                name="log-in-outline"
-              ></ion-icon>
-            </button>
-            <button
-              id="logout-button"
-              class="bg-icon h-10 w-10 cursor-pointer rounded-md border-0 p-1 text-lg font-bold transition-colors duration-300 ease-in-out hover:bg-gray-200"
-            >
-              <ion-icon
-                class="cursor-pointer text-white"
-                size="large"
-                name="log-out-outline"
-              ></ion-icon>
-            </button>
+        <div id="create-success-popup" class="hidden">
+          <div
+            class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50"
+          >
+            <div class="max-w-md rounded-lg bg-white p-6 text-center shadow-lg">
+              <h2 class="mb-2 text-2xl font-bold text-common">
+                Listing Published!!
+              </h2>
+              <p class="mb-4 text-gray-700">Check it out now.</p>
+              <button
+                id="close-create-popup"
+                class="rounded bg-icon px-4 py-2 font-bold text-white hover:bg-gray-200"
+              >
+                OK
+              </button>
+            </div>
           </div>
         </div>
-      </header>
-      <div class="flex items-center justify-center pt-6">
-        <div class="flex flex-grow items-center justify-center">
-          <div class="bg-common flex w-1/2 rounded-lg border pb-6">
-            <form
-              class="bg-common mx-auto flex w-full max-w-[40rem] flex-col px-8 py-4 sm:px-0"
-              name="createPost"
-            >
-              <h1 class="text-center text-5xl text-white">Create New Post</h1>
-
-              <div class="flex flex-col gap-4">
-                <label class="text-white" for="post-title">Title:</label>
-                <input
-                  class="mb-4 rounded-md border-2 border-transparent bg-origin-border p-2 text-base [background-clip:padding-box,border-box]"
-                  type="text"
-                  id="post-title"
-                  name="title"
-                  required
-                />
-
-                <label class="text-white" for="post-content">Content:</label>
-                <textarea
-                  class="mb-4 rounded-md border-2 border-transparent bg-origin-border p-2 text-base [background-clip:padding-box,border-box] [background-image:linear-gradient(white,white),linear-gradient(135deg,var(--color-gradient-from),var(--color-gradient-to))]"
-                  aria-label="message"
-                  rows="10"
-                  cols="45"
-                  name="body"
-                  id="content"
-                ></textarea>
-
-                <label class="text-white" for="key-words">Tags:</label>
-                <input
-                  class="mb-4 rounded-md border-2 border-transparent bg-origin-border p-2 text-base [background-clip:padding-box,border-box]"
-                  type="string"
-                  id="keywords"
-                  name="tags"
-                />
-
-                <label class="text-white" for="post-image">Image URL:</label>
-                <input
-                  class="mb-4 rounded-md border-2 border-transparent bg-origin-border p-2 text-base [background-clip:padding-box,border-box]"
-                  type="url"
-                  id="post-image"
-                  name="image-url"
-                />
-
-                <label class="text-white" for="image-alt">Image Alt:</label>
-                <input
-                  class="mb-4 rounded-md border-2 border-transparent bg-origin-border p-2 text-base [background-clip:padding-box,border-box]"
-                  type="string"
-                  id="post-image-alt"
-                  name="image-alt"
-                />
-              </div>
-              <div id="errors"></div>
-              <div class="flex justify-center gap-8 p-12">
-                <button
-                  id="create-post-submit-button"
-                  type="submit"
-                  class="bg-icon w-[10rem] cursor-pointer rounded-md border-0"
-                >
-                  Create
-                </button>
-                <button
-                  id="cancel-post-submit-button"
-                  type="button"
-                  class="bg-icon w-[10rem] cursor-pointer rounded-md border-0"
-                >
-                  Cancel
-                </button>
-              </div>
-            </form>
-          </div>
+      </main>
+      <footer>
+        <div class="flex flex-col items-center bg-common pt-4">
+          <img
+            class="mb-2 h-auto items-center"
+            src="/asset/footer-logo.png"
+            alt="bStorm logo"
+          />
+          <p class="justify-center pb-4 text-base text-white">
+            &copy; All rights reserved 2024.
+          </p>
         </div>
-      </div>
-    </main>
-  </div>
+      </footer>
+    </div>
+  </body>
 </html>

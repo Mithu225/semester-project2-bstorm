@@ -16,14 +16,11 @@ registerForm.addEventListener("submit", async (event) => {
   const password = event.target.elements["password"].value;
 
   try {
-    const response = await axios.post(
-      "https://v2.api.noroff.dev/auth/register",
-      {
-        name: name,
-        email: email,
-        password: password,
-      },
-    );
+    const response = await axios.post(API_REGISTER, {
+      name: name,
+      email: email,
+      password: password,
+    });
 
     const popupMessageElm = document.querySelector("#register-success-popup");
     popupMessageElm.classList.remove("hidden");
@@ -40,5 +37,6 @@ registerForm.addEventListener("submit", async (event) => {
       return `<p>${item.message}</p>`;
     });
     errorsElm.innerHTML = newErrors;
+    console.log(error, dff);
   }
 });
