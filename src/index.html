@@ -40,11 +40,12 @@
           >
             <div class="relative w-full sm:w-1/2">
               <input
+              id="search-input"
                 type="text"
                 placeholder="Find listing...."
                 class="w-full rounded-full border border-gray-300 p-2 text-lg outline-none"
               />
-              <button
+              <button id="search-button"
                 class="absolute right-3 top-1/2 -translate-y-1/2 transform cursor-pointer border-0 bg-white"
               >
                 <ion-icon
@@ -92,10 +93,18 @@
         </header>
         <div class="hidden p-4" id="avatar-home">
           <div class="flex flex-row gap-4 p-4">
-            <img
-              class="h-20 w-20 rounded-full"
-              src="./public/asset/rings.jpg"
-            />
+            <div class="flex flex-col">
+              <img
+                class="h-20 w-20 rounded-full"
+                src="./public/asset/rings.jpg"
+              />
+
+              <ion-icon
+                class="cursor-pointer pl-6 text-common"
+                size="large"
+                name="create-outline"
+              ></ion-icon>
+            </div>
             <div class="flex flex-col">
               <p
                 id="credit-username"
@@ -103,7 +112,8 @@
               >
                 mi
               </p>
-              <p class="text-sm font-bold text-common">Credit: 1000</p>
+              <p class="pb-1 text-sm font-bold text-common">Credit: 1000</p>
+
               <button
                 id="create-button"
                 class="mt-2 rounded bg-icon px-4 py-2 font-semibold text-common transition hover:bg-yellow-200"
@@ -115,15 +125,15 @@
         </div>
         <div class="hidden" id="introduction">
           <h1 class="p-6 text-center text-4xl text-h1">Join the Storm!</h1>
-          <p class="mx-auto w-1/2 pb-4 text-justify text-2xl text-black">
+          <p class="mx-auto w-1/2 pb-1 text-justify text-xl text-common">
             We believe that every item has its own story, and every bid brings a
             new opportunity. Whether you're looking to score big on unique items
             or put your own treasures up for grabs, bStorm is the place where
             excitement meets opportunity.
           </p>
         </div>
-       <div id="listing"  class="flex flex-wrap gap-4 mt-3 p-8">
-        <!-- <div  class="flex flex-wrap justify-center gap-8 p-8">
+        <div id="listing" class="mt-3 flex flex-wrap gap-4 p-8">
+          <!-- <div  class="flex flex-wrap justify-center gap-8 p-8">
           <div
             class="flex w-full flex-col overflow-hidden rounded-lg border bg-white p-4 shadow-md sm:w-1/2 lg:w-1/4"
           >

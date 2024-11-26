@@ -1,33 +1,28 @@
 import "@app/login/login";
 import "@app/register/register";
+import "@app/utils/logout";
+import "@app/utils/search"
 import axios from "axios";
 
 export const API_LISTING = "https://v2.api.noroff.dev/auction/listings";
 
+const userInfo = document.querySelector("#avatar-home");
+const introduction = document.querySelector("#introduction");
+const creditName = document.querySelector("#credit-username");
 const listingSelector = document.querySelector("#listing");
+
 const getListing = async () => {
   const response = await axios.get(
     `${API_LISTING}?_seller=true&_active=true&sort=created`,
   );
-  // {
-  //   title: title,
-  //   description: description,
-  //   tags: tags.split(","),
-  //   media: [
-  //     {
-  //       url: url,
-  //       alt: alt,
-  //     },
-  //   ],
-  //   endsAt: new Date(date).toISOString(),
-  // });
+
   console.log(response.data);
   const listing = response.data;
 
   const getSinglePost = listing.data.map(
     (item) => `
           <div
-            class="flex-1 basis-full md:basis-1/3 xl:basis-1/4 overflow-hidden rounded-lg border bg-white p-8 shadow-md transition duration-300 hover:bg-gray-100 hover:border-gray-400"
+            class="flex-1 basis-full md:basis-1/4 xl:basis-1/4 overflow-hidden rounded-lg border bg-white p-8 shadow-md transition duration-300 hover:bg-gray-100 hover:border-gray-400"
           >
             <img
               src="${item.media[0]?.url}"
@@ -79,10 +74,8 @@ const user = userFromLocal != null ? JSON.parse(userFromLocal) : null;
 
 const token = localStorage.getItem("token");
 
-const userInfo = document.querySelector("#avatar-home");
-const introduction = document.querySelector("#introduction");
-const creditName = document.querySelector("#credit-username");
-const userName = user.name;
+
+const userName = user?.name;
 
 creditName.innerHTML = userName;
 if (token) {
