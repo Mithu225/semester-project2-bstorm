@@ -1,4 +1,5 @@
 import axios from "axios";
+import "@app/utils/header";
 import { getHeaders } from "./api";
 const createForm = document.forms.createPost;
 const cancelPost = document.querySelector("#cancel-post-submit-button");

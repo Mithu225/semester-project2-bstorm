@@ -1,16 +1,142 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Profile</title>
+    <title>bStorm Profile</title>
+    <script type="module" src="./profile.js"></script>
     <link rel="stylesheet" href="../style.css" />
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
   </head>
   <body>
-    <div>
-      Profile
+    <!-- <div id="app"></div> -->
+    <div class="flex min-h-screen flex-col">
+      <main class="flex-grow">
+        <header></header>
+        <div class="p-4" id="avatar-home">
+          <div class="flex flex-row justify-center gap-4 p-4 text-center">
+            <div class="flex flex-col">
+              <img
+                id="avatar-image"
+                class="h-20 w-20 rounded-full"
+                src="../public/asset/rings.jpg"
+              />
+            </div>
+            <div class="flex flex-col">
+              <p
+                id="credit-username"
+                class="cursor-pointer py-2 text-sm font-bold text-common"
+              >
+                mi
+              </p>
+              <p class="pb-1 text-sm font-bold text-common">Credit: 1000</p>
+            </div>
+          </div>
+          <div class="text-center">
+            <button
+              id="update-avatar-button"
+              class="mt-2 rounded bg-icon px-4 py-2 font-semibold text-common transition hover:bg-yellow-200"
+            >
+              Update avatar
+            </button>
+            <button
+              id="create-button"
+              class="mt-2 rounded bg-icon px-4 py-2 font-semibold text-common transition hover:bg-yellow-200"
+            >
+              Create New
+            </button>
+          </div>
+        </div>
+        <h1 class="text-center text-4xl font-bold text-common">
+          Your Listings
+        </h1>
+
+        <div id="update-avatar-form" class="hidden">
+          <div
+            class="fixed inset-0 flex items-center justify-center bg-gray-400 bg-opacity-75"
+          >
+            <div class="relative flex flex-grow items-center justify-center">
+              <div class="relative flex w-3/4 rounded-lg border bg-common pb-6">
+                <button
+                  id="close-update-button"
+                  class="absolute right-2 top-2 h-10 w-10 cursor-pointer rounded-md border-0 p-1 text-lg font-bold transition-colors duration-300 ease-in-out hover:bg-gray-200"
+                >
+                  <ion-icon
+                    class="cursor-pointer text-icon"
+                    size="large"
+                    name="close-outline"
+                  ></ion-icon>
+                </button>
+                <div class="flex-1 rounded-lg text-white">
+                  <div class="text-center">
+                    <img
+                      class="mx-auto mb-2 cursor-pointer"
+                      src="../public/asset/bstorm-logo.png"
+                      alt="bStorm logo"
+                    />
+                    <h1 class="m-0 text-center text-2xl text-white">
+                      Update your avatar
+                    </h1>
+                  </div>
+
+                  <form
+                    class="mx-auto flex max-w-[40rem] flex-col pt-4 text-lg"
+                    name="update-avatar"
+                  >
+                    <div
+                      class="flex w-full flex-col gap-4 px-8 py-0 text-left sm:px-0"
+                    >
+                      <label class="text-white" for="avatar-url"
+                        >Avatar Image URL</label
+                      >
+                      <input
+                        class="mb-4 rounded-md border-2 border-transparent bg-origin-border p-2 text-base text-black [background-clip:padding-box,border-box]"
+                        id="avatar-url-input"
+                        type="url"
+                        name="avatar-url"
+                        placeholder="Enter image URL"
+                        required
+                      />
+                    </div>
+                    <div id="errors" class="text-red-500"></div>
+                    <div class="p-8 text-center">
+                      <button
+                        id="update-avatar-submit-button"
+                        type="submit"
+                        class="cursor-pointer rounded-lg bg-icon px-4 py-2 text-common"
+                      >
+                        Update
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <footer>
+        <div class="flex flex-col items-center bg-common pt-4">
+          <img
+            class="mb-2 h-auto items-center"
+            src="../public/asset/footer-logo.png"
+            alt="bStorm logo"
+          />
+          <p class="justify-center pb-4 text-base text-white">
+            &copy; All rights reserved 2024.
+          </p>
+        </div>
+      </footer>
     </div>
-    <script type="module" src="./profile.js"></script>
   </body>
 </html>

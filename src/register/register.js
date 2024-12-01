@@ -1,5 +1,5 @@
 import axios from "axios";
-
+export function initRegister() {
 const registerButtonElm = document.querySelector("#register-button");
 const registerFormElm = document.querySelector("#register-form");
 
@@ -40,3 +40,4 @@ registerForm.addEventListener("submit", async (event) => {
     console.log(error, dff);
   }
 });
+}
