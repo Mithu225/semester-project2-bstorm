@@ -8,7 +8,7 @@ const headerContent = `
   <div
     class="flex flex-col items-center justify-between gap-4 bg-common p-2.5 px-5 sm:flex-row"
   >
-    <div class="flex w-full justify-center sm:w-auto sm:justify-start">
+    <div class="w-full sm:w-auto flex justify-center sm:justify-end">
       <a href="/">
         <img
           class="cursor-pointer"
@@ -91,15 +91,16 @@ const headerContent = `
                     name="close-outline"
                   ></ion-icon>
                 </button>
-                <div class="flex-1 rounded-lg text-white">
+                <div class="flex-1 rounded-lg p-6 text-white">
                   <div class="text-center">
-                    <img
+                      <img
                       class="mx-auto mb-2 cursor-pointer"
-                      src="./public/asset/bstorm-logo.png"
+                      src="/public/asset/bstorm-logo.png"
                       alt="bStorm logo"
                     />
 
-                    <h1 class="m-0 text-center text-white">
+
+                    <h1 class="mt-2 text-center text-white">
                       Bid Strong Win Stronger
                     </h1>
                   </div>
@@ -177,11 +178,11 @@ const headerContent = `
                     name="close-outline"
                   ></ion-icon>
                 </button>
-                <div class="flex-1 rounded-lg text-white">
+                <div class="flex-1 rounded-lg p-6 text-white">
                   <div class="text-center">
                     <img
                       class="mx-auto mb-2 cursor-pointer"
-                      src="./public/asset/bstorm-logo.png"
+                      src="/public/asset/bstorm-logo.png"
                       alt="bStorm logo"
                     />
 

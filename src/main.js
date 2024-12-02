@@ -14,7 +14,6 @@ const getListing = async () => {
     `${API_LISTING}?_seller=true&_active=true&sort=created`,
   );
 
-  
   const listings = response.data;
 
   const getPosts = listings.data.map(
@@ -89,3 +88,16 @@ if (token) {
 document.getElementById("create-button").addEventListener("click", () => {
   window.location.href = "/create/";
 });
+
+const savedAvatarUrl = localStorage.getItem("avatarUrl");
+
+
+if (savedAvatarUrl) {
+  const avatarImageHome = document.querySelector("#avatar-image-home"); // Lấy thẻ img
+  if (avatarImageHome) {
+    avatarImageHome.src = savedAvatarUrl; 
+  }
+
+ 
+  
+}

@@ -30,7 +30,7 @@ export function initLogin() {
       const accessToken = result.data.accessToken;
       localStorage.setItem("token", result.data.accessToken);
       localStorage.setItem("user", JSON.stringify(result.data));
-      window.location.href = "/";
+      window.location.reload();
       ///endb3.1
       ///b3.2
     } catch (error) {
