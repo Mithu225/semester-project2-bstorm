@@ -35,6 +35,8 @@ createForm.addEventListener("submit", async (event) => {
       },
     );
 
+
+
     const createPopupElm = document.querySelector("#create-success-popup");
     createPopupElm.classList.remove("hidden");
 

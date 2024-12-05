@@ -27,16 +27,16 @@ const getListing = async () => {
               alt="${item.media[0]?.alt}"
               class="rounded-lg w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
             />
-           
+        
             <h2 class="mt-4 pb-2 text-lg font-semibold break-words">${item.title}</h2>
             <p class="text-common pb-2">
-              Current bid: <span class="font-bold text-gray-700">7,068.0$</span>
+              Current bid: <span class=" text-common">7,068.0$</span>
             </p>
            
           
               <div class="flex text-center gap-1">
-                <p class="text-lg text-common">Updated:</p>
-                <p class="text-lg text-red-700">${item.updated}</p>
+                <p class=" text-common">Updated:</p>
+                <p class=" text-red-700">${item.updated}</p>
               </div>
               <div class="mt-auto">
           <button 
@@ -91,13 +91,9 @@ document.getElementById("create-button").addEventListener("click", () => {
 
 const savedAvatarUrl = localStorage.getItem("avatarUrl");
 
-
 if (savedAvatarUrl) {
-  const avatarImageHome = document.querySelector("#avatar-image-home"); // Lấy thẻ img
+  const avatarImageHome = document.querySelector("#avatar-image-home");
   if (avatarImageHome) {
-    avatarImageHome.src = savedAvatarUrl; 
+    avatarImageHome.src = savedAvatarUrl;
   }
-
- 
-  
 }

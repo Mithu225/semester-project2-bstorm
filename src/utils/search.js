@@ -41,8 +41,8 @@ export function initSearch() {
            
           
               <div class="flex text-center gap-1">
-                <p class="text-lg text-common">Updated:</p>
-                <p class="text-lg text-red-700">${result.updated}</p>
+                <p class="text-common">Updated:</p>
+                <p class="text-red-700">${result.updated}</p>
               </div>
               <div class="mt-auto">
           <button
