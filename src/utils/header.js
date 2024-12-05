@@ -272,6 +272,14 @@ initRegister();
 initSearch();
 initLogout();
 
+
+const listButton = document.querySelector("#list");
+if (listButton) {
+  listButton.addEventListener("click", () => {
+    window.location.href = "/profile/";
+  });
+}
+
 const closeLoginButtonElm = document.querySelector("#close-login-button");
 const loginFormElm = document.querySelector("#login-form");
 const registerFormElm = document.querySelector("#register-form");
