@@ -20,11 +20,11 @@ const getSingleListing = async () => {
         <img
           src="${listing.media[0]?.url}"
           alt="${listing.media[0]?.alt || "Auction Image"}"
-          class="w-1/3 h-auto rounded-md"
+          class="w-1/3 h-50 rounded-md"
         />
         <div class="flex w-full flex-col p-6 lg:w-2/3">
           <h1 class="mb-2 text-3xl font-bold text-gray-900">${listing.title}</h1>
-          <p class="mb-4 text-gray-600">${listing.description}</p>
+          <p class="mb-4 text-lg text-gray-600">Description:${listing.description}</p>
           <p class="mb-4 text-lg text-gray-800">
             Time left:
             <span class="font-bold text-red-500">${new Date(listing.endsAt).toLocaleString()}</span>
