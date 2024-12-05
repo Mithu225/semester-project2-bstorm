@@ -1,8 +1,9 @@
+import { getApiHeaders } from "@app/utils/getApiHeaders";
 import "@app/utils/header";
 import axios from "axios";
 
-const API_PROFILE_LISTING =
-  "https://v2.api.noroff.dev/auction/listings?_tag=my_tag&_active=true";
+const API_PROFILE =
+  "https://v2.api.noroff.dev/auction/profiles";
 const userListingSelector = document.querySelector("#profile-listings");
 
 const updateAvatarBtn = document.querySelector("#update-avatar-button");
@@ -52,21 +53,29 @@ const getUserFromLocalStorage = () => {
 
 const getUserListings = async () => {
   const user = getUserFromLocalStorage();
-  const userID = user?.id;
-  console.log(user);
+  const username = user?.name;
+  const token = localStorage.getItem("token");
+
+  if (!username || !token) {
+    userListingSelector.innerHTML = `<p class="text-gray-500">Please log in to view your listings.</p>`;
+    return;
+  }
 
   try {
-    const response = await axios.get(API_PROFILE_LISTING);
-    console.log(response.data);
-    const allListings = response.data.data;
-    console.log(allListings);
-
-    const userListings = allListings.filter((item) => item.data.id === userID);
-    console.log("Bài đăng của người dùng:", userListings);
-
-    displayUserListings(userListings);
+    const response = await axios.get(`${API_PROFILE}/${username}/listings?_active=true`, {
+      headers: getApiHeaders()
+    });
+    const listings = response.data.data;
+    
+    if (!listings || listings.length === 0) {
+      userListingSelector.innerHTML = `<p class="text-gray-500">You haven't created any listings yet.</p>`;
+      return;
+    }
+    
+    displayUserListings(listings);
   } catch (error) {
     console.error("Error fetching user listings:", error);
+    userListingSelector.innerHTML = `<p class="text-red-500">Error loading listings. Please try again later.</p>`;
   }
 };
 
