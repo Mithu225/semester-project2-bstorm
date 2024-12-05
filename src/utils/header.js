@@ -204,7 +204,7 @@ const headerContent = `
                         type="username"
                         name="name"
                         maxlength="20"
-                        pattern="^[\w]+$"
+                        pattern="^[a-zA-Z0-9_]+$"
                         title="Please enter a username using only letters and numbers"
                         placeholder="Max 20 characters"
                         required

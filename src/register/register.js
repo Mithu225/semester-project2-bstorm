@@ -1,5 +1,7 @@
 import axios from "axios";
 export function initRegister() {
+
+const API_REGISTER = "https://v2.api.noroff.dev/auth/register";
 const registerButtonElm = document.querySelector("#register-button");
 const registerFormElm = document.querySelector("#register-form");
 
@@ -37,7 +39,7 @@ registerForm.addEventListener("submit", async (event) => {
       return `<p>${item.message}</p>`;
     });
     errorsElm.innerHTML = newErrors;
-    console.log(error, dff);
+    
   }
 });
 }
