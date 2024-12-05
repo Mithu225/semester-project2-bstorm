@@ -1,4 +1,5 @@
 import axios from "axios";
+
 export function initSearch() {
   const searchResults = document.querySelector("#listing");
   const searchElm = document.querySelector("#search-button");
@@ -14,48 +15,40 @@ export function initSearch() {
 
           if (results.length > 0) {
             const resultsList = document.createElement("div");
-            resultsList.classList.add(
-              "flex",
-              "flex-wrap",
-              "gap-4",
-              "items-stretch",
-            );
-            results.forEach((result) => {
-              const listItem = document.createElement("div");
-              listItem.classList.add("flex", "flex-1", "items-stretch");
-              listItem.style.flexBasis = "calc(33.333% - 16px)";
-              (listItem.innerHTML = `
-              <div
-            class="flex flex-col h-auto flex-1 basis-full md:basis-1/4 xl:basis-1/4 overflow-hidden rounded-lg border bg-white p-8 shadow-md transition duration-300 hover:bg-gray-100 hover:border-gray-400"
-          >
-            <img
-              src="${result.media[0]?.url}"
-              alt="${result.media[0]?.alt}"
-              class="rounded-lg w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
-            />
-           
-            <h2 class="mt-4 pb-2 text-lg font-semibold w-64 break-words">${result.title}</h2>
-            <p class="text-common pb-2">
-              Current bid: <span class="font-bold text-gray-700">7,068.0$</span>
-            </p>
-           
-          
-              <div class="flex text-center gap-1">
-                <p class="text-common">Updated:</p>
-                <p class="text-red-700">${result.updated}</p>
-              </div>
-              <div class="mt-auto">
-          <button
-              class="mt-2 rounded bg-green-500 px-4 py-2 font-semibold text-white transition hover:bg-green-700"
-            >
-              Place A Bid
-            </button>
-            </div>
-          </div>`),
-                resultsList.appendChild(listItem);
-            });
+            resultsList.classList.add("container", "mx-auto", "px-4");
+            resultsList.innerHTML = `<div class="flex flex-wrap pb-6 gap-4">
+              ${results.map((result) => `
+                <div class="w-full md:w-[calc(25%-1rem)] flex flex-col overflow-hidden rounded-lg border bg-white p-8 shadow-md transition duration-300 hover:bg-gray-100 hover:border-gray-400 cursor-pointer" data-id="${result.id}">
+                  <img
+                    src="${result.media[0]?.url}"
+                    alt="${result.media[0]?.alt}"
+                    class="rounded-lg w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <h2 class="mt-4 pb-2 text-lg font-semibold break-words">${result.title}</h2>
+                  <p class="text-common pb-2">
+                    Current bid: <span class="font-bold text-gray-700">7,068.0$</span>
+                  </p>
+                  <div class="flex text-center gap-1">
+                    <p class="text-common">Updated:</p>
+                    <p class="text-red-700">${new Date(result.updated).toLocaleString()}</p>
+                  </div>
+                  <div class="mt-auto">
+                    <button class="place-bid-button mt-2 rounded bg-green-500 px-4 py-2 font-semibold text-white transition hover:bg-green-700">Place A Bid</button>
+                  </div>
+                </div>
+              `).join("")}
+            </div>`;
 
             searchResults.appendChild(resultsList);
+
+            // Re-add event listeners for bid buttons
+            const cards = document.querySelectorAll("[data-id]");
+            cards.forEach((card) => {
+              card.addEventListener("click", () => {
+                const id = card.getAttribute("data-id");
+                window.location.href = `/single-listing/?id=${id}`;
+              });
+            });
           } else {
             searchResults.innerHTML = `<p>No results were found. "${query}".</p>`;
           }

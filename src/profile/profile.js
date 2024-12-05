@@ -81,32 +81,31 @@ const getUserListings = async () => {
 
 const displayUserListings = (listings) => {
   if (listings.length === 0) {
-    userListingSelector.innerHTML = `<p class="text-gray-500">No active listings found for the selected tag.</p>`;
+    userListingSelector.innerHTML = `<p class="text-gray-500">No active listings found.</p>`;
     return;
   }
   const getUserPosts = listings.map(
     (item) => `
-        <div
-          class="card h-auto flex flex-col basis-full md:basis-1/3 xl:basis-1/4 overflow-hidden rounded-lg border bg-white p-4 shadow-md transition duration-300 hover:bg-gray-100 hover:border-gray-400 cursor-pointer"
-          data-id="${item.id}" 
-        >
-          <img
-            src="${item.media[0]?.url}"
-            alt="${item.media[0]?.alt}"
-            class="rounded-lg w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
-          />
-          <h2 class="mt-4 pb-2 text-lg font-semibold break-words">${item.title}</h2>
-          <p class="text-common pb-2">
-            Current bid: <span class="font-bold text-gray-700">${item._count?.bids || 0} bids</span>
-          </p>
-          <div class="flex text-center gap-1">
-            <p class=" text-common">Updated:</p>
-            <p class=" text-red-700">${new Date(item.updated).toLocaleString()}</p>
-          </div>
-        </div>`,
+          <div class="w-full md:w-[calc(25%-1rem)] flex flex-col overflow-hidden rounded-lg border bg-white p-8 shadow-md transition duration-300 hover:bg-gray-100 hover:border-gray-400 cursor-pointer">
+            <img
+              src="${item.media[0]?.url}"
+              alt="${item.media[0]?.alt}"
+              class="rounded-lg w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+            <h2 class="mt-4 pb-2 text-lg font-semibold break-words">${item.title}</h2>
+            <p class="text-common pb-2">
+              Current bid: <span class="text-common">7,068.0$</span>
+            </p>
+            <div class="flex text-center gap-1">
+              <p class="text-common">Updated:</p>
+              <p class="text-red-700">${new Date(item.updated).toLocaleString()}</p>
+            </div>
+          </div>`,
   );
 
-  userListingSelector.innerHTML = getUserPosts.join("");
+  userListingSelector.innerHTML = `<div class="container mx-auto px-4">
+    <div class="flex flex-wrap pb-6 gap-4">${getUserPosts.join("")}</div>
+  </div>`;
 };
 
 getUserListings();

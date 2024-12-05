@@ -27,7 +27,7 @@ const getSingleListing = async () => {
           <p class="mb-4 text-gray-600">${listing.description}</p>
           <p class="mb-4 text-lg text-gray-800">
             Time left:
-            <span class="font-bold text-red-500">${listing.endsAt}</span>
+            <span class="font-bold text-red-500">${new Date(listing.endsAt).toLocaleString()}</span>
           </p>
           <p class="mb-4 text-lg text-gray-800">
             Top bid: <span class="font-semibold">${listing._count}</span>

@@ -18,8 +18,8 @@ const getListing = async () => {
 
   const getPosts = listings.data.map(
     (item) => `
-          <div
-            class="card h-auto flex flex-col flex-1 basis-full md:basis-1/4 xl:basis-1/4 overflow-hidden rounded-lg border bg-white p-8 shadow-md transition duration-300 hover:bg-gray-100 hover:border-gray-400 cursor-pointer"
+                    <div class="w-full md:w-[calc(25%-1rem)] flex flex-col overflow-hidden rounded-lg border bg-white p-8 shadow-md transition duration-300 hover:bg-gray-100 hover:border-gray-400 cursor-pointer"
+
          data-id="${item.id}" 
             >
             <img
@@ -36,7 +36,7 @@ const getListing = async () => {
           
               <div class="flex text-center gap-1">
                 <p class=" text-common">Updated:</p>
-                <p class=" text-red-700">${item.updated}</p>
+                <p class=" text-red-700">${new Date(item.updated).toLocaleString()}</p>
               </div>
               <div class="mt-auto">
           <button 
@@ -48,7 +48,9 @@ const getListing = async () => {
           </div>`,
   );
 
-  listingsSelector.innerHTML = getPosts.join("");
+  listingsSelector.innerHTML = `<div class="container mx-auto px-4">
+    <div class="flex flex-wrap pb-6 gap-4">${getPosts.join("")}</div>
+    </div>`;
 
   const cards = document.querySelectorAll(".card");
   cards.forEach((card) => {

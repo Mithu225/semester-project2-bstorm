@@ -5,7 +5,6 @@ export function initLogout() {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     alert("You have been logged out successfully!");
-    // introduction.classList.remove("hidden");
     window.location.href = "/";
   });
 }
