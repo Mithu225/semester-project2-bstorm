@@ -3,9 +3,15 @@ import axios from "axios";
 export function initLogin() {
   const loginButtonElm = document.querySelector("#login-button");
   const loginFormElm = document.querySelector("#login-form");
+  const profileButton = document.querySelector("#profile-button")
+
+  if (localStorage.getItem("token")) {
+    profileButton.classList.remove("hidden");
+  }
 
   loginButtonElm.addEventListener("click", () => {
     loginFormElm.classList.toggle("hidden");
+   
   });
 
   //// b1
@@ -30,6 +36,7 @@ export function initLogin() {
       const accessToken = result.data.accessToken;
       localStorage.setItem("token", result.data.accessToken);
       localStorage.setItem("user", JSON.stringify(result.data));
+      profileButton.classList.remove("hidden");
       window.location.reload();
       ///endb3.1
       ///b3.2

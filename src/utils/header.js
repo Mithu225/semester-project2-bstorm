@@ -43,8 +43,8 @@ const headerContent = `
     <div class="flex w-full justify-center sm:w-auto sm:justify-end">
       <div class="flex items-center gap-2 pr-8">
         <button
-          id="list"
-          class="h-10 w-10 cursor-pointer rounded-md border-0 bg-icon p-1 text-lg font-bold transition-colors duration-300 ease-in-out hover:bg-gray-200"
+          id="profile-button"
+          class="hidden h-10 w-10 cursor-pointer rounded-md border-0 bg-icon p-1 text-lg font-bold transition-colors duration-300 ease-in-out hover:bg-gray-200"
         >
           <ion-icon
             class="cursor-pointer text-white"
@@ -273,9 +273,9 @@ initSearch();
 initLogout();
 
 
-const listButton = document.querySelector("#list");
-if (listButton) {
-  listButton.addEventListener("click", () => {
+const profileListingButton = document.querySelector("#profile-button");
+if (profileListingButton) {
+  profileListingButton.addEventListener("click", () => {
     window.location.href = "/profile/";
   });
 }

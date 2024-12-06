@@ -20,8 +20,8 @@ export function initSearch() {
               ${results.map((result) => `
                 <div class=" card w-full md:w-[calc(33.33%-1rem)] flex flex-col overflow-hidden rounded-lg border bg-white p-8 shadow-md transition duration-300 hover:bg-gray-100 hover:border-gray-400 cursor-pointer" data-id="${result.id}">
                   <img
-                    src="${result.media[0]?.url}"
-                    alt="${result.media[0]?.alt}"
+                    src="${result.media[0]?.url || "/asset/no-image.png"}"
+                    alt="${result.media[0]?.alt || "Auction Image"}"
                     class="rounded-lg w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                   <h2 class="mt-4 pb-2 text-lg font-semibold break-words">${result.title}</h2>

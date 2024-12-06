@@ -27,7 +27,7 @@ const getSingleListing = async () => {
     const detailListingContent = ` 
       <div class="flex w-full p-6">
         <img
-          src="${listing.media[0]?.url}"
+          src="${listing.media[0]?.url || "/asset/no-image.png"}"
           alt="${listing.media[0]?.alt || "Auction Image"}"
           class="w-1/2 h-50 rounded-md"
         />
