@@ -116,6 +116,15 @@ const getSingleListing = async () => {
             return;
           }
 
+          // Get user data and check credits
+          const userData = JSON.parse(localStorage.getItem("user"));
+          const userCredits = userData?.credits || 1000;
+          
+          if (bidAmount > userCredits) {
+            showMessage(`Insufficient credits. You have ${userCredits} NOK available.`, "error");
+            return;
+          }
+
           try {
             const response = await axios({
               method: 'post',
@@ -127,6 +136,26 @@ const getSingleListing = async () => {
             });
 
             if (response.data.data) {
+              // Update user credits after successful bid
+              userData.credits -= bidAmount;
+              localStorage.setItem("user", JSON.stringify(userData));
+              
+              // Save credits separately for persistence
+              localStorage.setItem(`userCredits_${userData.email}`, JSON.stringify({ 
+                credits: userData.credits 
+              }));
+
+              // Update credit display if on same page
+              const creditDisplay = document.getElementById("credit-profile");
+              if (creditDisplay) {
+                creditDisplay.textContent = `Credits: ${userData.credits} NOK`;
+              }
+
+              // Update profile page if it exists
+              if (window.updateCreditDisplay) {
+                window.updateCreditDisplay();
+              }
+
               showMessage("Bid placed successfully!", "success");
               setTimeout(() => {
                 window.location.reload();

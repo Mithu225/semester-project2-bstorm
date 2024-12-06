@@ -6,7 +6,7 @@ export const API_LISTING = "https://v2.api.noroff.dev/auction/listings";
 const userInfo = document.querySelector("#avatar-home");
 const introduction = document.querySelector("#introduction");
 
-const creditName = document.querySelector("#credit-username");
+const profileName = document.querySelector("#username-profile");
 const listingsSelector = document.querySelector("#listing");
 
 const getListing = async () => {
@@ -42,7 +42,7 @@ const getListing = async () => {
             <p class="text-common pb-2">
               Total bids: <span class="font-bold text-gray-700">${bids.length}</span>
             </p>
-            <div class="flex text-center gap-1">
+            <div class="flex  gap-1">
               <p class="text-common">Ends at:</p>
               <p class="text-red-700">${new Date(item.endsAt).toLocaleString()}</p>
             </div>
@@ -95,17 +95,32 @@ const user = userFromLocal != null ? JSON.parse(userFromLocal) : null;
 const token = localStorage.getItem("token");
 
 const userName = user?.name;
+const userCredits = user?.credits || 1000;
 
-creditName.innerHTML = userName;
+if (profileName && userName) {
+  profileName.textContent = userName;
+}
+
+// Update credit display
+const creditDisplay = document.getElementById("credit-profile");
+if (creditDisplay && userCredits) {
+  creditDisplay.textContent = `Credits: ${userCredits} NOK`;
+}
+
 if (token) {
   userInfo.classList.remove("hidden");
 } else {
+  userInfo.classList.add("hidden");
   introduction.classList.remove("hidden");
 }
 
-document.getElementById("create-button").addEventListener("click", () => {
-  window.location.href = "/create/";
-});
+// Add create button functionality
+const createButton = document.getElementById("create-button");
+if (createButton) {
+  createButton.addEventListener("click", () => {
+    window.location.href = "/create/";
+  });
+}
 
 const savedAvatarUrl = localStorage.getItem("avatarUrl");
 

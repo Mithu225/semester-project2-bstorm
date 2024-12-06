@@ -1,5 +1,7 @@
-// Check if user is logged in
+// Check if user is logged in and get user data
 const token = localStorage.getItem("token");
+const user = JSON.parse(localStorage.getItem("user"));
+
 if (!token) {
   alert("Please log in to view your profile listings.");
   window.location.href = "/";
@@ -24,10 +26,6 @@ updateAvatarBtn.addEventListener("click", () => {
 
 closeUpdateBtn.addEventListener("click", () => {
   avatarUpdateForm.classList.add("hidden");
-});
-
-document.getElementById("create-button").addEventListener("click", () => {
-  window.location.href = "/create/index";
 });
 
 const avatarUrlInput = document.querySelector("#avatar-url-input");
@@ -75,7 +73,7 @@ const getUserListings = async () => {
     const listings = response.data.data;
     
     if (!listings || listings.length === 0) {
-      userListingSelector.innerHTML = `<p class="text-gray-500">You haven't created any listings yet.</p>`;
+      userListingSelector.innerHTML = `<p class="text-gray-500 text-center">You haven't created any listings yet.</p>`;
       return;
     }
     
@@ -101,7 +99,7 @@ const displayUserListings = (listings) => {
             />
             <h2 class="mt-4 pb-2 text-lg font-semibold break-words">${item.title}</h2>
             <p class="text-common pb-2">Description: ${item.description}</p>
-            <div class="flex text-center gap-1">
+            <div class="flex gap-1">
               <p class="text-common">Ends at:</p>
               <p class="text-red-700">${new Date(item.endsAt).toLocaleString()}</p>
             </div>
@@ -122,5 +120,40 @@ const displayUserListings = (listings) => {
     });
   });
 };
+
+// Update username and credits in profile page
+const usernameElement = document.getElementById("username-profile");
+const creditElement = document.getElementById("credit-profile");
+
+if (usernameElement && user) {
+  usernameElement.textContent = user.name;
+}
+
+if (creditElement && user) {
+  creditElement.textContent = `Credits: ${user.credits || 1000} NOK`;
+}
+
+// Function to update credits display
+function updateCredits() {
+  const currentUser = JSON.parse(localStorage.getItem("user"));
+  const creditDisplay = document.getElementById("credit-profile");
+  if (creditDisplay && currentUser?.credits !== undefined) {
+    creditDisplay.textContent = `Credits: ${currentUser.credits} NOK`;
+  }
+}
+
+// Initial credit update
+updateCredits();
+
+// Update credits every time profile page is focused
+window.addEventListener('focus', updateCredits);
+
+// Add create button functionality
+const createButton = document.getElementById("create-button");
+if (createButton) {
+  createButton.addEventListener("click", () => {
+    window.location.href = "/create/";
+  });
+}
 
 getUserListings();

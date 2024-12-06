@@ -24,6 +24,13 @@ registerForm.addEventListener("submit", async (event) => {
       password: password,
     });
 
+    // Store user data with initial credits
+    const userData = {
+      ...response.data.data,
+      credits: 1000
+    };
+    localStorage.setItem("user", JSON.stringify(userData));
+
     const popupMessageElm = document.querySelector("#register-success-popup");
     popupMessageElm.classList.remove("hidden");
 

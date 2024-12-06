@@ -272,7 +272,6 @@ initRegister();
 initSearch();
 initLogout();
 
-
 const profileListingButton = document.querySelector("#profile-button");
 if (profileListingButton) {
   profileListingButton.addEventListener("click", () => {
@@ -293,4 +292,26 @@ const closeRegisterButtonElm = document.querySelector("#close-register-button");
 closeRegisterButtonElm.addEventListener("click", () => {
   loginFormElm.classList.add("hidden");
   registerFormElm.classList.add("hidden");
+});
+
+const logoutButton = document.querySelector("#logout-button");
+logoutButton.addEventListener("click", () => {
+  // Store credits before logout
+  const userData = JSON.parse(localStorage.getItem("user"));
+  const userCredits = userData?.credits;
+  const userEmail = userData?.email;
+  
+  // Clear current session
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
+  
+  // Store credits for next login if they exist
+  if (userCredits && userEmail) {
+    localStorage.setItem("lastUserCredits", JSON.stringify({
+      email: userEmail,
+      credits: userCredits
+    }));
+  }
+  
+  window.location.href = "/";
 });
