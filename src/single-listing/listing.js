@@ -20,17 +20,16 @@ const getSingleListing = async () => {
 
     const listing = response.data.data;
     
-    // Sort bids by date in descending order
     const sortedBids = listing.bids?.sort((a, b) => new Date(b.created) - new Date(a.created)) || [];
     
-    console.log('Bids data:', sortedBids); // Debug log to see bid data structure
+    console.log('Bids data:', sortedBids);
     
     const detailListingContent = ` 
       <div class="flex w-full p-6">
         <img
           src="${listing.media[0]?.url}"
           alt="${listing.media[0]?.alt || "Auction Image"}"
-          class="w-1/3 h-50 rounded-md"
+          class="w-1/2 h-50 rounded-md"
         />
         <div class="flex w-full flex-col p-6 lg:w-2/3">
           <h1 class="mb-2 text-3xl font-bold text-gray-900">${listing.title}</h1>
@@ -47,23 +46,26 @@ const getSingleListing = async () => {
               <a href="/login/" class="text-blue-600 underline">Login</a> to place your bid
             </p>
           ` : `
-            <form id="bid-form" class="flex items-center gap-2 w-1/2">
-              <input
-                id="bid-amount"
-                type="number"
-                placeholder="Enter bid amount..."
-                class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-300"
-                required
-                min="1"
-              />
-              <button
-                type="submit"
-                class="rounded-lg bg-icon px-6 py-2 font-bold text-gray-900 transition duration-200 hover:bg-yellow-200"
-              >
-                Bid
-              </button>
+            <form id="bid-form" class="flex flex-col gap-2 w-full md:w-2/3">
+              <div class="flex flex-col md:flex-row items-center gap-2">
+                <input
+                  id="bid-amount"
+                  type="number"
+                  placeholder="Enter bid (NOK)"
+                  class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-300 text-lg"
+                  required
+                  min="1"
+                  max="999999999999"
+                />
+                <button
+                  type="submit"
+                  class="w-full md:w-auto rounded-lg bg-icon px-6 py-2 font-bold text-gray-900 transition duration-200 hover:bg-yellow-200"
+                >
+                  Bid
+                </button>
+              </div>
+              <div id="bid-message" class="mt-2 hidden"></div>
             </form>
-            <div id="bid-message" class="mt-2 hidden"></div>
           `}
 
           <!-- Bid History Table -->

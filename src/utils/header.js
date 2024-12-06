@@ -49,7 +49,7 @@ const headerContent = `
           <ion-icon
             class="cursor-pointer text-white"
             size="large"
-            name="newspaper-outline"
+            name="person-outline"
           ></ion-icon>
         </button>
         <button

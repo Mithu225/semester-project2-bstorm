@@ -18,7 +18,7 @@ export function initSearch() {
             resultsList.classList.add("container", "mx-auto", "px-4");
             resultsList.innerHTML = `<div class="flex flex-wrap pb-6 gap-4">
               ${results.map((result) => `
-                <div class=" card w-full md:w-[calc(25%-1rem)] flex flex-col overflow-hidden rounded-lg border bg-white p-8 shadow-md transition duration-300 hover:bg-gray-100 hover:border-gray-400 cursor-pointer" data-id="${result.id}">
+                <div class=" card w-full md:w-[calc(33.33%-1rem)] flex flex-col overflow-hidden rounded-lg border bg-white p-8 shadow-md transition duration-300 hover:bg-gray-100 hover:border-gray-400 cursor-pointer" data-id="${result.id}">
                   <img
                     src="${result.media[0]?.url}"
                     alt="${result.media[0]?.alt}"

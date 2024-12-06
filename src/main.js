@@ -19,14 +19,14 @@ const getListing = async () => {
 
     const getPosts = listings.data.map(
       (item) => {
-        // Get the highest bid amount
+        
         const bids = item.bids || [];
         const highestBid = bids.length > 0 
           ? Math.max(...bids.map(bid => bid.amount))
           : 0;
 
         return `
-          <div class="card w-full md:w-[calc(25%-1rem)] flex flex-col overflow-hidden rounded-lg border bg-white p-8 shadow-md transition duration-300 hover:bg-gray-100 hover:border-gray-400 cursor-pointer"
+          <div class="card w-full md:w-[calc(33.33%-1rem)] flex flex-col overflow-hidden rounded-lg border bg-white p-8 shadow-md transition duration-300 hover:bg-gray-100 hover:border-gray-400 cursor-pointer"
             data-id="${item.id}" 
           >
             <img
@@ -66,7 +66,7 @@ const getListing = async () => {
       </div>
     `;
 
-    // Add click handlers to cards
+   
     const cards = document.querySelectorAll(".card");
     cards.forEach((card) => {
       card.addEventListener("click", () => {
@@ -87,7 +87,7 @@ const getListing = async () => {
 };
 getListing();
 
-//user status b1
+
 
 const userFromLocal = localStorage.getItem("user");
 const user = userFromLocal != null ? JSON.parse(userFromLocal) : null;

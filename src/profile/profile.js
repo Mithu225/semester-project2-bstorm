@@ -86,26 +86,34 @@ const displayUserListings = (listings) => {
   }
   const getUserPosts = listings.map(
     (item) => `
-          <div class="w-full md:w-[calc(25%-1rem)] flex flex-col overflow-hidden rounded-lg border bg-white p-8 shadow-md transition duration-300 hover:bg-gray-100 hover:border-gray-400 cursor-pointer">
+          <div class="listing-card w-full md:w-[calc(33.33%-1rem)] flex flex-col overflow-hidden rounded-lg border bg-white p-8 shadow-md transition duration-300 hover:bg-gray-100 hover:border-gray-400 cursor-pointer" data-id="${item.id}">
             <img
               src="${item.media[0]?.url}"
               alt="${item.media[0]?.alt}"
               class="rounded-lg w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
             />
             <h2 class="mt-4 pb-2 text-lg font-semibold break-words">${item.title}</h2>
-            <p class="text-common pb-2">
-              Current bid: <span class="text-common">7,068.0$</span>
-            </p>
+            <p class="text-common pb-2">Description: ${item.description}</p>
             <div class="flex text-center gap-1">
-              <p class="text-common">Updated:</p>
-              <p class="text-red-700">${new Date(item.updated).toLocaleString()}</p>
+              <p class="text-common">Ends at:</p>
+              <p class="text-red-700">${new Date(item.endsAt).toLocaleString()}</p>
             </div>
           </div>`,
   );
 
   userListingSelector.innerHTML = `<div class="container mx-auto px-4">
     <div class="flex flex-wrap pb-6 gap-4">${getUserPosts.join("")}</div>
-  </div>`;
+    </div>`;
+
+
+  const listingCards = document.querySelectorAll('.listing-card');
+  listingCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const listingId = card.getAttribute('data-id');
+      localStorage.setItem('selected-listing', listingId);
+      window.location.href = '/single-listing/';
+    });
+  });
 };
 
 getUserListings();
