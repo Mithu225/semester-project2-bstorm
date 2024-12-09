@@ -1,4 +1,8 @@
-// Check if user is logged in and get user data
+
+import { getApiHeaders } from "@app/utils/getApiHeaders";
+import "@app/utils/header";
+import axios from "axios";
+
 const token = localStorage.getItem("token");
 const user = JSON.parse(localStorage.getItem("user"));
 
@@ -7,9 +11,7 @@ if (!token) {
   window.location.href = "/";
 }
 
-import { getApiHeaders } from "@app/utils/getApiHeaders";
-import "@app/utils/header";
-import axios from "axios";
+
 
 const API_PROFILE =
   "https://v2.api.noroff.dev/auction/profiles";

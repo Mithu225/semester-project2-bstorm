@@ -296,16 +296,16 @@ closeRegisterButtonElm.addEventListener("click", () => {
 
 const logoutButton = document.querySelector("#logout-button");
 logoutButton.addEventListener("click", () => {
-  // Store credits before logout
+
   const userData = JSON.parse(localStorage.getItem("user"));
   const userCredits = userData?.credits;
   const userEmail = userData?.email;
   
-  // Clear current session
+ 
   localStorage.removeItem("token");
   localStorage.removeItem("user");
   
-  // Store credits for next login if they exist
+ 
   if (userCredits && userEmail) {
     localStorage.setItem("lastUserCredits", JSON.stringify({
       email: userEmail,

@@ -136,22 +136,22 @@ const getSingleListing = async () => {
             });
 
             if (response.data.data) {
-              // Update user credits after successful bid
+             
               userData.credits -= bidAmount;
               localStorage.setItem("user", JSON.stringify(userData));
               
-              // Save credits separately for persistence
+              
               localStorage.setItem(`userCredits_${userData.email}`, JSON.stringify({ 
                 credits: userData.credits 
               }));
 
-              // Update credit display if on same page
+             
               const creditDisplay = document.getElementById("credit-profile");
               if (creditDisplay) {
                 creditDisplay.textContent = `Credits: ${userData.credits} NOK`;
               }
 
-              // Update profile page if it exists
+              
               if (window.updateCreditDisplay) {
                 window.updateCreditDisplay();
               }

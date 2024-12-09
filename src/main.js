@@ -16,10 +16,10 @@ const getListing = async () => {
     );
 
     const listings = response.data;
+    const token = localStorage.getItem("token"); // Get token to check login status
 
     const getPosts = listings.data.map(
       (item) => {
-        
         const bids = item.bids || [];
         const highestBid = bids.length > 0 
           ? Math.max(...bids.map(bid => bid.amount))
@@ -42,13 +42,13 @@ const getListing = async () => {
             <p class="text-common pb-2">
               Total bids: <span class="font-bold text-gray-700">${bids.length}</span>
             </p>
-            <div class="flex  gap-1">
+            <div class="flex gap-1">
               <p class="text-common">Ends at:</p>
               <p class="text-red-700">${new Date(item.endsAt).toLocaleString()}</p>
             </div>
             <div class="mt-auto">
               <button 
-                class="place-bid-button hidden mt-2 rounded bg-green-500 px-4 py-2 font-semibold text-white transition hover:bg-green-700"
+                class="place-bid-button mt-2 rounded bg-green-500 px-4 py-2 font-semibold text-white transition hover:bg-green-700 ${!token ? 'hidden' : ''}"
               >
                 Place A Bid
               </button>
@@ -66,7 +66,6 @@ const getListing = async () => {
       </div>
     `;
 
-   
     const cards = document.querySelectorAll(".card");
     cards.forEach((card) => {
       card.addEventListener("click", () => {
