@@ -1,4 +1,5 @@
 import axios from "axios";
+import "@app/utils/header";
 
 const API_LISTING = "https://v2.api.noroff.dev/auction/listings";
 
@@ -8,8 +9,9 @@ async function searchListings(searchTerm) {
       `${API_LISTING}?_seller=true&_active=true&_bids=true&sort=created&_tag=${searchTerm}`
     );
 
-    const listings = response.data;
     const token = localStorage.getItem("token");
+
+    const listings = response.data;
 
     if (!listings.data || listings.data.length === 0) {
       const searchResults = document.querySelector("#listing");
@@ -87,32 +89,7 @@ async function searchListings(searchTerm) {
   }
 }
 
-export function initSearch() {
-  const searchButton = document.querySelector("#search-button");
-  const searchInput = document.querySelector("#search-input");
-
-  if (!searchButton || !searchInput) {
-    console.error("Search elements not found");
-    return;
-  }
-
-  
-  searchButton.addEventListener("click", async (e) => {
-    e.preventDefault();
-    const searchTerm = searchInput.value.trim();
-    if (searchTerm) {
-      await searchListings(searchTerm);
-    }
-  });
-
-  
-  searchInput.addEventListener("keypress", async (e) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      const searchTerm = searchInput.value.trim();
-      if (searchTerm) {
-        await searchListings(searchTerm);
-      }
-    }
-  });
+const searchTerm = localStorage.getItem("searchTerm");
+if (searchTerm) {
+  searchListings(searchTerm);
 }

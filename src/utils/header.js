@@ -1,7 +1,7 @@
 import { initLogin } from "@app/login/login";
 import { initRegister } from "@app/register/register";
 import { initLogout } from "@app/utils/logout";
-import { initSearch } from "@app/utils/search";
+import { initSearch } from "./searchBar";
 
 const headerSelector = document.querySelector("header");
 const headerContent = `
