@@ -123,7 +123,7 @@ const displayUserListings = (listings) => {
   });
 };
 
-// Update username and credits in profile page
+
 const usernameElement = document.getElementById("username-profile");
 const creditElement = document.getElementById("credit-profile");
 
@@ -135,7 +135,6 @@ if (creditElement && user) {
   creditElement.textContent = `Credits: ${user.credits || 1000} NOK`;
 }
 
-// Function to update credits display
 function updateCredits() {
   const currentUser = JSON.parse(localStorage.getItem("user"));
   const creditDisplay = document.getElementById("credit-profile");
@@ -144,13 +143,13 @@ function updateCredits() {
   }
 }
 
-// Initial credit update
+
 updateCredits();
 
-// Update credits every time profile page is focused
+
 window.addEventListener('focus', updateCredits);
 
-// Add create button functionality
+
 const createButton = document.getElementById("create-button");
 if (createButton) {
   createButton.addEventListener("click", () => {

@@ -36,7 +36,7 @@ const getSingleListing = async () => {
           <p class="mb-4 text-lg text-gray-600">Description: ${listing.description}</p>
           <p class="mb-4 text-lg text-gray-800">
             Time left:
-            <span class="font-bold text-red-500">${new Date(listing.endsAt).toLocaleString()}</span>
+            <span class="font-bold text-red-700">${new Date(listing.endsAt).toLocaleString()}</span>
           </p>
           <p class="mb-4 text-lg text-gray-800">
             Current Top Bid: <span class="font-semibold">${sortedBids[0]?.amount || "No bids yet"}</span>
@@ -48,6 +48,7 @@ const getSingleListing = async () => {
           ` : `
             <form id="bid-form" class="flex flex-col gap-2 w-full md:w-2/3">
               <div class="flex flex-col md:flex-row items-center gap-2">
+              <label for="bid-amount" class="hidden text-sm font-medium text-gray-700">Bid Amount (NOK)</label>
                 <input
                   id="bid-amount"
                   type="number"

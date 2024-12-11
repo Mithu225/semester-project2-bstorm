@@ -22,6 +22,7 @@ const headerContent = `
       class="flex w-full items-center justify-center sm:flex-grow sm:justify-start sm:pl-4"
     >
       <div class="relative w-full sm:w-1/2">
+      <label for="search-input" class="sr-only">Search listings</label>
         <input
           id="search-input"
           type="text"
@@ -31,6 +32,7 @@ const headerContent = `
         <button
           id="search-button"
           class="absolute right-3 top-1/2 -translate-y-1/2 transform cursor-pointer border-0 bg-white"
+          aria-label="Search"
         >
           <ion-icon
             class="text-lg text-common"
@@ -45,6 +47,7 @@ const headerContent = `
         <button
           id="profile-button"
           class="hidden h-10 w-10 cursor-pointer rounded-md border-0 bg-icon p-1 text-lg font-bold transition-colors duration-300 ease-in-out hover:bg-gray-200"
+          aria-label="User Profile"
         >
           <ion-icon
             class="cursor-pointer text-white"
@@ -55,6 +58,7 @@ const headerContent = `
         <button
           id="login-button"
           class="h-10 w-10 cursor-pointer rounded-md border-0 bg-icon p-1 text-lg font-bold transition-colors duration-300 ease-in-out hover:bg-gray-200"
+          aria-label="User Login"
         >
           <ion-icon
             class="cursor-pointer text-white"
@@ -65,7 +69,8 @@ const headerContent = `
         <button
           id="logout-button"
           class="h-10 w-10 cursor-pointer rounded-md border-0 bg-icon p-1 text-lg font-bold transition-colors duration-300 ease-in-out hover:bg-gray-200"
-        >
+       aria-label="User logout"
+          >
           <ion-icon
             class="cursor-pointer text-white"
             size="large"
@@ -257,7 +262,7 @@ const headerContent = `
               <p class="mb-4 text-gray-700">Welcome to the platform.</p>
               <button
                 id="close-popup"
-                class="rounded bg-icon px-4 py-2 font-bold text-white hover:bg-gray-200"
+                class="rounded bg-green-700 px-4 py-2 font-bold text-white hover:bg-gray-200"
               >
                 OK
               </button>

@@ -51,7 +51,7 @@ async function searchListings(searchTerm) {
           </div>
           <div class="mt-auto">
             <button 
-              class="place-bid-button mt-2 rounded bg-green-500 px-4 py-2 font-semibold text-white transition hover:bg-green-700 ${!token ? 'hidden' : ''}"
+              class="place-bid-button mt-2 rounded bg-green-700 px-4 py-2 font-semibold text-white transition hover:bg-green-500 ${!token ? 'hidden' : ''}"
             >
               Place A Bid
             </button>
