@@ -240,7 +240,7 @@ const headerContent = `
                       <button
                         id="register-submit-button"
                         type="submit"
-                        class="cursor-pointer rounded-lg bg-icon px-6 pt-0 text-common"
+                        class="cursor-pointer rounded-lg bg-icon px-4 py-2 text-common"
                       >
                         register
                       </button>
