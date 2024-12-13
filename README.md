@@ -3,12 +3,6 @@
 <img width="1414" alt="Screenshot 2024-12-13 at 11 45 55" src="https://github.com/user-attachments/assets/bb792832-bff3-4b56-9a4e-982efc9e772a" />
 
 
-
-# FED1 Project Exam - Spice4life Food blog.
-
-
-<img width="1435" alt="Food-blog " src="https://github.com/Mithu225/spice4life/assets/145982119/dd553ba3-78bc-4855-9369-2aa696b446f2">
-
 ## Description
  Auction Site
 A web application where users can add items to be bid on and bid on items that other users have put up for auction. This project is being developed by me.
