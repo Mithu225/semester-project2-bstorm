@@ -45,7 +45,7 @@ createForm.addEventListener("submit", async (event) => {
       createPopupElm.classList.add("hidden");
       window.location.href = "/";
     });
-    console.log(response);
+    
   } catch (error) {
     const errors = error.response.data.errors;
     const errorsElm = document.getElementById("errors-create");
@@ -53,6 +53,6 @@ createForm.addEventListener("submit", async (event) => {
       return `<p>${item.message}</p>`;
     });
     errorsElm.innerHTML = newErrors;
-    console.log(error);
+    
   }
 });
