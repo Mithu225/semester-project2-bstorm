@@ -58,6 +58,13 @@ const getUserFromLocalStorage = () => {
   return userFromLocal ? JSON.parse(userFromLocal) : null;
 };
 
+const createButton = document.getElementById("create-button");
+if (createButton) {
+  createButton.addEventListener("click", () => {
+    window.location.href = "/create/";
+  });
+}
+
 const getUserListings = async () => {
   const user = getUserFromLocalStorage();
   const username = user?.name;
@@ -72,6 +79,7 @@ const getUserListings = async () => {
     const response = await axios.get(`${API_PROFILE}/${username}/listings?_active=true`, {
       headers: getApiHeaders()
     });
+    
     const listings = response.data.data;
     
     if (!listings || listings.length === 0) {
@@ -150,11 +158,6 @@ updateCredits();
 window.addEventListener('focus', updateCredits);
 
 
-const createButton = document.getElementById("create-button");
-if (createButton) {
-  createButton.addEventListener("click", () => {
-    window.location.href = "/create/";
-  });
-}
+
 
 getUserListings();
