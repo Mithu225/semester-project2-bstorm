@@ -16,11 +16,12 @@ export default {
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        index: "./src/index.html",
-        login: "./src/login/index.html",
-        profile: "./src/profile/index.html",
-        register: "./src/register/index.html",
-        sucess: "./src/register/sucess/index.html",
+        index: resolve(__dirname, "src/index.html"),
+        singleListing: resolve(__dirname, "src/single-listing/index.html"),
+        profile: resolve(__dirname, "src/profile/index.html"),
+        search: resolve(__dirname, "src/search/index.html"),
+        create: resolve(__dirname, "src/create/index.html"),
+        404: resolve(__dirname, "src/404.html"),
       },
     },
   },
