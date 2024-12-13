@@ -64,7 +64,7 @@ I would love to get in touch with you if you would like to talk more about this 
 
 ## Live pages:
 
-- [https://spice4life.thuhuynh.no/](https://spice4life.thuhuynh.no/)
+- [https://bstorm.thuhuynh.no/](https://bstorm.thuhuynh.no/)
 
 
 
