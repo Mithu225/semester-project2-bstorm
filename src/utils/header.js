@@ -21,24 +21,26 @@ const headerContent = `
     <div
       class="flex w-full items-center justify-center sm:flex-grow sm:justify-start sm:pl-4"
     >
-      <div class="relative w-full sm:w-1/2">
-      <label for="search-input" class="sr-only">Search listings</label>
-        <input
-          id="search-input"
-          type="text"
-          placeholder="Find listing...."
-          class="w-full rounded-full border border-gray-300 p-2 text-lg outline-none"
-        />
-        <button
-          id="search-button"
-          class="absolute right-3 top-1/2 -translate-y-1/2 transform cursor-pointer border-0 bg-white"
-          aria-label="Search"
-        >
-          <ion-icon
-            class="text-lg text-common"
-            name="search-outline"
-          ></ion-icon>
-        </button>
+      <div class="relative w-full max-w-xl">
+        <label for="search-input" class="sr-only">Search listings</label>
+        <div class="relative">
+          <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+            <ion-icon name="search-outline" class="h-5 w-5 text-gray-400"></ion-icon>
+          </div>
+          <input
+            id="search-input"
+            type="text"
+            placeholder="Search listings..."
+            class="block w-full rounded-lg border border-gray-300 bg-white py-2.5 pl-10 pr-12 text-sm text-gray-900 focus:border-icon focus:ring-2 focus:ring-icon transition-all duration-200"
+          />
+          <button
+            id="search-button"
+            class="absolute right-2.5 top-1/2 -translate-y-1/2 rounded-md bg-common px-4 py-1.5 text-sm font-medium text-white hover:bg-icon focus:outline-none focus:ring-2 focus:ring-icon transition-all duration-200"
+            aria-label="Search"
+          >
+            Search
+          </button>
+        </div>
       </div>
     </div>
 
