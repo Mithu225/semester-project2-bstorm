@@ -1,7 +1,7 @@
 # bStorm - An auction website
 
-<img width="1414" alt="Screenshot 2024-12-13 at 11 45 55" src="https://github.com/user-attachments/assets/bb792832-bff3-4b56-9a4e-982efc9e772a" />
 
+<img width="1036" alt="Screenshot 2024-12-13 at 22 21 21" src="https://github.com/user-attachments/assets/e5a2a8fe-5b09-4861-91b8-a8c3db65c808" />
 
 ## Description
  Auction Site
