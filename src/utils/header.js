@@ -12,7 +12,7 @@ const headerContent = `
       <a href="/">
         <img
           class="cursor-pointer"
-          src="/asset/bstorm-logo.png"
+          src="/assets/bstorm-logo.png"
           alt="bStorm logo"
         />
       </a>
@@ -100,7 +100,7 @@ const headerContent = `
                   <div class="text-center">
                       <img
                       class="mx-auto mb-2 cursor-pointer"
-                      src="/public/asset/bstorm-logo.png"
+                      src="/assets/bstorm-logo.png"
                       alt="bStorm logo"
                     />
 
@@ -187,7 +187,7 @@ const headerContent = `
                   <div class="text-center">
                     <img
                       class="mx-auto mb-2 cursor-pointer"
-                      src="/public/asset/bstorm-logo.png"
+                      src="/assets/bstorm-logo.png"
                       alt="bStorm logo"
                     />
 

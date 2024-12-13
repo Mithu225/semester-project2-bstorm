@@ -103,7 +103,7 @@ const displayUserListings = (listings) => {
     (item) => `
           <div class="listing-card w-full md:w-[calc(33.33%-1rem)] flex flex-col overflow-hidden rounded-lg border bg-white p-8 shadow-md transition duration-300 hover:bg-gray-100 hover:border-gray-400 cursor-pointer" data-id="${item.id}">
             <img
-              src="${item.media[0]?.url || "/asset/no-image.png"}"
+              src="${item.media[0]?.url || "/assets/no-image.png"}"
               alt="${item.media[0]?.alt || "Auction Image"}"
               class="rounded-lg w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
             />

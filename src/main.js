@@ -30,7 +30,7 @@ const getListing = async () => {
             data-id="${item.id}" 
           >
             <img
-              src="${item.media[0]?.url || "/asset/no-image.png"}"
+              src="${item.media[0]?.url || "/assets/no-image.png"}"
               alt="${item.media[0]?.alt || "Auction Image"}"
               class="rounded-lg w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
             />

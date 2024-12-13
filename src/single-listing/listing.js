@@ -27,7 +27,7 @@ const getSingleListing = async () => {
     const detailListingContent = ` 
       <div class="flex w-full p-6">
         <img
-          src="${listing.media[0]?.url || "/asset/no-image.png"}"
+          src="${listing.media[0]?.url || "/assets/no-image.png"}"
           alt="${listing.media[0]?.alt || "Auction Image"}"
           class="w-1/2 h-50 rounded-md"
         />
@@ -43,7 +43,7 @@ const getSingleListing = async () => {
           </p>
           ${!token || !user.name ? `
             <p class="mb-4 text-sm text-gray-500">
-              <a href="/login/" class="text-blue-600 underline">Login</a> to place your bid
+              <a id="login-link" class="cursor-pointer text-blue-600 underline">Login</a> to place your bid
             </p>
           ` : `
             <form id="bid-form" class="flex flex-col gap-2 w-full md:w-2/3">
@@ -104,6 +104,12 @@ const getSingleListing = async () => {
       </div>`;
 
     getDetailListing.innerHTML = detailListingContent;
+    const loginLink = document.querySelector("#login-link");
+    const loginFormElm = document.querySelector("#login-form");
+    loginLink?.addEventListener("click", () => {
+      loginFormElm.classList.toggle("hidden");
+    }); 
+
 
     if (token && user.name) {
       const bidForm = document.querySelector("#bid-form");
@@ -117,7 +123,7 @@ const getSingleListing = async () => {
             return;
           }
 
-          // Get user data and check credits
+         
           const userData = JSON.parse(localStorage.getItem("user"));
           const userCredits = userData?.credits || 1000;
           
